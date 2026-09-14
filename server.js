@@ -86,6 +86,36 @@ app.get('/entries', async (req, res)=>{
 
 
 
+
+app.get('/my-entries', isSignedIn, async (req, res)=>{
+
+const myEntries = await Entry.find({owner: req.session.user._id})
+
+res.render('my-entries.ejs', {myEntries})
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // connect to database and listen on Port 3000
 async function startServer() {
     const PORT = process.env.PORT || 3000;
