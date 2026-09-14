@@ -13,7 +13,7 @@
 <h1><%=entry.title%><h1></h1>
 <p><%=entry.entryBody%></p>
 <p><%=entry.owner%></p>
-<% if(entry.owner.equals(user._id)){ %>
+<% if(user && entry.owner.equals(user._id)){ %>
 
 <button>Delete</button>
 <button>Edit</button>
