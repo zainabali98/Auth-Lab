@@ -13,6 +13,15 @@
 <h1><%=entry.title%></h1>
 <p><%=entry.entryBody%></p>
 <p><%=entry.owner%></p>
+<% if(user && entry.owner.equals(user._id)){ %>
+
+<form action="/my-entries/<%= entry._id %>?_method=DELETE" method="POST">
+    <button>Delete</button>
+</form>
+<br>
+<button>Edit</button>
+
+<% }%>
 <% }%>
 
 </body>

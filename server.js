@@ -95,6 +95,12 @@ res.render('my-entries.ejs', {myEntries})
 })
 
 
+app.delete('/entries/:id', async (req, res) => {
+    await Entry.findByIdAndDelete(req.params.id)
+    res.redirect('/entries')
+})
+
+
 
 
 

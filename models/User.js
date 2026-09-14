@@ -11,6 +11,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  isAdmin: {
+    type: [String],
+    default: false,
+  }
 }, {timestamps: true});
 
 const User = mongoose.model("User", userSchema);
