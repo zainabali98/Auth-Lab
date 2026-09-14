@@ -13,6 +13,7 @@ const User = require('./models/User.js')
 // middleware imports
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
+const isAdmin = require('./middleware/is-admin.js')
 
 // routes Imports
 const authController = require("./routes/auth.routes.js");
