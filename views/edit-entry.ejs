@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+  <%- include('./partials/navbar') %>  
+
+
+<form method="post" action="/entries/:id/edit">
+    <h1>Update your entry here!</h1>
+<div>
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title">
+</div>
+<br>
+<div>
+    <label for="entryBody">Enrty Description</label>
+    <input type="text" name="entryBody" id="entryBody">
+</div>
+<br>
+<div>
+    <label for="isPublic">Is it public?</label>
+    <input type="checkbox" name="isPublic" id="isPublic" value="true">
+</div>
+<br>
+
+
+<button>Submit</button>
+
+
+
+</form>
+
+
+
+</body>
+</html>

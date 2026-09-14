@@ -101,6 +101,19 @@ app.delete('/entries/:id', async (req, res) => {
 })
 
 
+app.get('/entries/:id/edit', async (req, res) => {
+    const entry = await Entry.findById(req.params.id)
+    res.render('edit-entry.ejs', { entry })
+})
+
+
+
+app.put('/entries/:id', async (req, res) => {
+    await Entry.findByIdAndUpdate(req.params.id, req.body)
+    res.redirect('/entries')
+})
+
+
 
 
 
