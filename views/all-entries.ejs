@@ -13,7 +13,14 @@
 <%=entry.title%>
 <%=entry.entryBody%>
 <%=entry.owner%>
+<% if(entry.owner.equals(user._id)){ %>
+
+<button>Delete</button>
+<button>Edit</button>
+
 <% }%>
+<% }%>
+
 
 </body>
 </html>
