@@ -7,6 +7,8 @@ const session = require('express-session');
 const methodOverride = require('method-override')
 const {MongoStore} = require("connect-mongo");
 const connectToDB = require('./db.js')
+const Entry = require('./models/Entry.js')
+const User = require('./models/User.js')
 
 // middleware imports
 const isSignedIn = require("./middleware/is-signed-in.js");
@@ -16,6 +18,7 @@ const passUserToView = require("./middleware/pass-user-to-view.js");
 const authController = require("./routes/auth.routes.js");
 const indexController = require("./routes/index.routes.js");
 const entriesController = require("./routes/entries.routes.js");
+const router = require("./routes/auth.routes.js");
 
 
 // Middleware
@@ -57,10 +60,28 @@ app.use('/',indexController)
 app.use('/entries', entriesController)
 
 
+
+
 app.get('/entries/new', isSignedIn, (req, res)=> {
 
-  res.redirect('/sign-in')
+  res.render('submission.ejs')
 })
+
+app.post('/entries/new', isSignedIn, async (req, res)=> {
+console.log(req.session.user._id)
+
+
+const newEntry = await Entry.create({
+  title: req.body.title,
+  entryBody: req.body.entryBody,
+  isPublic: req.body.isPublic,
+  owner: req.session.user._id
+})
+
+res.redirect('/entries')
+
+})
+
 
 
 

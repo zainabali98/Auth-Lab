@@ -18,4 +18,8 @@ const entrySchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-})
+},{timestamps: true})
+
+const Entry = mongoose.model("Entry", entrySchema);
+
+module.exports = Entry;
