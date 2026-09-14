@@ -1,14 +1,18 @@
 <nav>
-    
+
     <% if (user){ %>
-    <a href="/auth/sign-out">Logout</a>
+        <a href="/auth/sign-out">Logout</a>
         <a href="/">Homepage</a>
+        <a href="/entries">All-Entries</a>
+        <a href="/entries/new">New Enrty</a>
 
 
-    <% } else{ %>
-    <a href="/auth/sign-up">Sign up</a>
-    <a href="/auth/sign-in">Login</a>
+        <% } else{ %>
+            <a href="/auth/sign-up">Sign up</a>
+            <a href="/auth/sign-in">Login</a>
+            <a href="/entries">All-Entries</a>
 
-    <% } %>
-    
+
+            <% } %>
+
 </nav>

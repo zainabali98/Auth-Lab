@@ -60,16 +60,12 @@ app.use('/',indexController)
 app.use('/entries', entriesController)
 
 
-
-
 app.get('/entries/new', isSignedIn, (req, res)=> {
-
   res.render('submission.ejs')
 })
 
 app.post('/entries/new', isSignedIn, async (req, res)=> {
 console.log(req.session.user._id)
-
 
 const newEntry = await Entry.create({
   title: req.body.title,
@@ -77,12 +73,16 @@ const newEntry = await Entry.create({
   isPublic: req.body.isPublic,
   owner: req.session.user._id
 })
-
 res.redirect('/entries')
-
+console.log(req.body)
 })
 
-
+app.get('/entries', async (req, res)=>{
+  
+  const allEntries = await Entry.find({isPublic: true})
+  console.log(allEntries)
+  res.render('all-entries.ejs', {allEntries})
+})
 
 
 

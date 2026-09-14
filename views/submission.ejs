@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+  <%- include('./partials/navbar') %>  
 
 
 <form method="post" action="/entries/new">
@@ -23,7 +24,7 @@
 <br>
 <div>
     <label for="isPublic">Is it public?</label>
-    <input type="checkbox" name="isPublic" id="isPublic">
+    <input type="checkbox" name="isPublic" id="isPublic" value="true">
 </div>
 <br>
 
