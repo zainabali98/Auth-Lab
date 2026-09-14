@@ -56,11 +56,11 @@ app.use('/auth',authController)
 app.use('/',indexController)
 app.use('/entries', entriesController)
 
+
 app.get('/entries/new', isSignedIn, (req, res)=> {
 
-  res.render('')
+  res.redirect('/sign-in')
 })
-
 
 
 
