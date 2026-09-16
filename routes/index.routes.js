@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/admin', isAdmin, async (req, res) => {
-    const allUsers = await User.find()
+    const allUsers = await User.find({isDeleted: false});
     res.render('all-users.ejs', { allUsers: allUsers })
 })
 
@@ -29,7 +29,7 @@ router.post('/toggle-admin', isAdmin, async (req, res) => {
 
 router.post('/delete-user', isAdmin, async (req, res) => {
 
-    await User.findByIdAndDelete(req.body.userId);
+    await User.findByIdAndUpdate(req.body.userId, {isDeleted: true});
 
     res.redirect('/admin')
 })
