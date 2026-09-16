@@ -16,4 +16,16 @@ router.get('/admin', isAdmin, async (req, res)=>{
 })
 
 
+router.post('/toggle-admin', isAdmin, async (req, res)=>{
+
+  const toggledUsers = await User.findById(req.body.userId );
+
+ toggledUsers.isAdmin = !toggledUsers.isAdmin
+  await toggledUsers.save();
+    
+  res.redirect('/admin')
+})
+
+
+
 module.exports = router;
