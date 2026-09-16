@@ -110,12 +110,16 @@ app.get('/entries/:id/edit', async (req, res) => {
 
 
 app.put('/entries/:id', async (req, res) => {
-    await Entry.findByIdAndUpdate(req.params.id, req.body)
-    res.redirect('/entries')
+    const foundEntry = await Entry.findByIdAndUpdate(req.params.id, req.body)
+    res.redirect('/entries', {foundEntry})
 })
 
 
+app.post('/admin', isAdmin, async ()=>{
 
+const allUsers = await User.find()
+res.render('')
+})
 
 
 
