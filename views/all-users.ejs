@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
 </head>
 <%- include('./partials/navbar') %>
-<body>
 
-<% for(user of allUsers){ %>
+    <body>
 
-<h1><%=user.username%><h1></h1>
-<p><%=user.isAdmin%></p>
+        <% for(user of allUsers){ %>
 
-
-<form action="/toggle-admin" method="POST">
-    <input type="hidden" name="userId" value="<%=user._id%>">
-    <button>Update Status</button>
-</form>
-
+            <h1>
+                <%=user.username%>
+                    <h1></h1>
+                    <p>
+                        <%=user.isAdmin%>
+                    </p>
 
 
+                    <form action="/toggle-admin" method="POST">
+                        <input type="hidden" name="userId" value="<%=user._id%>">
+                        <button>Update Status</button>
+                    </form>
+                    <br>
+                    <form action="/delete-user" method="Post">
+                        <input type="hidden" name="userId" value="<%=user._id%>">
 
-<% }%>
+                        <button>Delete User</button>
+                    </form>
 
- 
-</body>
+
+                    <% }%>
+
+
+    </body>
+
 </html>
